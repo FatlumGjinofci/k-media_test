@@ -79,14 +79,14 @@
           <p class="bg-blue-400 text-white px-1 py-1 rounded-md">Company Logo</p>
           <h1 class="text-xl py-4">Sign in to The One System.</h1>
           <p class="text-left text-sm">Enter your details below</p>
-          <form action="">
+          <form @submit.prevent="login">
             <div class="text-left py-4">
               <p for="" class="text-left text-sm">e-Mail or Username</p>
-              <input type="text" class="border-b outline-none border-gray-400 w-64 text-sm py-2" placeholder="Enter your email or username">
+              <input v-model="user.email" type="text" class="border-b outline-none border-gray-400 w-64 text-sm py-2" placeholder="Enter your email or username">
             </div>
             <div class="text-left py-4">
               <p for="" class="text-left text-sm">Password</p>
-              <input type="text" class=" border-b outline-none border-gray-400 w-64 text-sm py-2" placeholder="Enter password">
+              <input v-model="user.password" type="password" class=" border-b outline-none border-gray-400 w-64 text-sm py-2" placeholder="Enter password">
             </div>
             <div class="flex">
               <input type="checkbox" name="" id="" class="text-xs text-left">
@@ -105,7 +105,24 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      user: {
+        email: '',
+        password: '',
+      },
+      errors: ''
+    }
+  },
+  methods: {
+    login() {
+      // console.log(this.email);
+      // console.log(this.password);
+      this.$store.dispatch("login", {
+          user: this.user
+        });
+    }
+  }
 }
 </script>
 
