@@ -11,17 +11,26 @@ export default new VueRouter({
         {
             path: '/login',
             name: 'login',
-            component: Login
+            component: Login,
+            meta: {
+                requiresGuest: true            
+            }
         },
         {
-            path: '/dashboard',
+            path: '/',
             name: 'dashboard',
-            component: Dashboard
+            component: Dashboard,
+            meta: {
+                requiresAuth: true,
+            }
         },
         {
             path: '/add',
             name: 'add',
-            component: AddCompany
+            component: AddCompany,
+            meta: {
+                requiresAuth: true,
+            }
         }
     ]
 })

@@ -120,6 +120,10 @@ export default {
       // console.log(this.password);
       this.$store.dispatch("login", {
           user: this.user
+        }).then(() => {
+          if (this.$store.getters.loggedIn) {
+            this.$router.push('/dashboard')
+          }
         });
     }
   }

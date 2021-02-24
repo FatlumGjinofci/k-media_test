@@ -68,7 +68,8 @@ const actions = {
             password: credentials.user.password
           })
           .then(response => {
-            const token = response.data.token;
+            const token = response.data.user.uid;
+            console.log(response.data.user.uid);
   
             localStorage.setItem("token", token);
             context.commit("retreiveToken", token);
